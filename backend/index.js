@@ -2,15 +2,22 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const mongoose = require("mongoose");
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
+const URL = process.env.MONGO_URL;
 
 const start = async () => {
   try {
+    await mongoose.connect(URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    console.log('MongoDB connected successfully!')
     app.listen(PORT, () =>
       console.log(`Server started on http://localhost:${PORT}`)
     )
