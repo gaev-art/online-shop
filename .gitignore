@@ -5,16 +5,17 @@
 /.pnp
 .pnp.js
 
-/.idea
-.idea
-
-/backend/.env
-
 # testing
 /coverage
 
 # production
 /build
+build
+
+/.idea
+.idea
+
+/backend/.env
 
 # misc
 .DS_Store

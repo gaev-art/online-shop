@@ -2,14 +2,17 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
+const path = require('path')
+
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const PORT = process.env.PORT;
-const URL = process.env.MONGO_URL;
+const PORT = process.env.PORT
+const PROD = process.env.NODE_ENV
+const URL = process.env.MONGO_URL
 
 const start = async () => {
   try {
@@ -25,6 +28,13 @@ const start = async () => {
     console.log('Server Error:', e.message)
     process.exit(1)
   }
+}
+
+if (PROD === 'production') {
+  app.use(express.static(path.join(__dirname, '../build')))
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build'))
+  })
 }
 
 start().then()
