@@ -4,7 +4,7 @@
 
 Click me!
 
-<a href='https://online-shoop.herokuapp.com/'><img height="27" src="https://www.herokucdn.com/favicons/favicon.ico" alt="redux"></a>
+<a href='https://gaev-art-shop.herokuapp.com/'><img height="27" src="https://www.herokucdn.com/favicons/favicon.ico" alt="heroku"></a>
 
 </div>
 
