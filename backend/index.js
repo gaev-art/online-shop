@@ -10,6 +10,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+
+app.use('/auth', require('./routes/auth.routes'))
+
 const PORT = process.env.PORT
 const PROD = process.env.NODE_ENV
 const URL = process.env.MONGO_URL

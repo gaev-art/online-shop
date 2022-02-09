@@ -15,6 +15,7 @@ build
 /.idea
 .idea
 
+.env
 /backend/.env
 
 # misc
