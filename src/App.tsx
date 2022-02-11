@@ -15,7 +15,7 @@ export const App = () => {
 
     useEffect(() => {
         const getUser = () => {
-            fetch("http://localhost:5000/login/success", {
+            fetch("https://gaev-art-shop.herokuapp.com/login/success", {
                 method: "GET",
                 credentials: "include",
                 headers: {
