@@ -1,50 +1,50 @@
-import { AppBar, Avatar, Box, Button, Container, IconButton, Toolbar } from '@mui/material';
+import {AppBar, Box, Button, Container, Toolbar} from '@mui/material';
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { actions } from '../../redux/authReducer';
+import {NavLink} from 'react-router-dom';
 
 const pages = ['first', 'second'];
 
 type PropsType = {
-  isAuth: boolean
+    user: any
 }
-
 export const Header = (props: PropsType) => {
 
-  const dispatch = useDispatch()
-
-  return (
-    <AppBar position="static" >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1 }}>
-            {pages.map((page) => (
-              <NavLink style={{ textDecoration: 'none', marginRight: '20px' }} key={page} to={page}>
-                <Button style={{ color: 'white' }} >{page}</Button>
-              </NavLink>
-            ))}
-          </Box>
-          {!props.isAuth
-            ?
-            <NavLink style={{ textDecoration: 'none', marginRight: '20px' }} to={'/login'}>
-              <Button style={{ color: 'white' }}>Login</Button>
-            </NavLink>
-            :
-            <Box  style={{ marginRight: '20px' }} sx={{ flexGrow: 0 }}>
-              <IconButton>
-                <Avatar alt="Gaev art" src="" />
-              </IconButton>
-            </Box>}
-          <Button
-            onClick={() => {
-              dispatch(actions.setToken(''))
-              localStorage.setItem('token', '')
-            }} style={{ color: 'white' }}>
-            Logout
-          </Button>
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
+    return (
+        <AppBar position="static">
+            <Container maxWidth="xl">
+                <Toolbar disableGutters>
+                    <Box sx={{flexGrow: 1}}>
+                        {pages.map((page) => (
+                            <NavLink style={{textDecoration: 'none', marginRight: '20px'}} key={page} to={page}>
+                                <Button style={{color: 'white'}}>{page}</Button>
+                            </NavLink>
+                        ))}
+                    </Box>
+                    {!props.user
+                        ?
+                        <Button style={{color: 'white'}} onClick={() => {
+                            // dispatch(login())
+                            window.open("http://localhost:5000/login", "_self");
+                        }
+                        }>Login with Google</Button>
+                        :
+                        <>
+                            <img
+                                src={props.user.photo}
+                                alt=""
+                                style={{height: '30px'}}
+                            />
+                            <span style={{margin: '0 50px 0 10px'}}>{props.user.lastName}{ props.user.firstName}</span>
+                            <Button
+                                onClick={() => {
+                                    // dispatch(logout())
+                                    window.open("http://localhost:5000/logout", "_self");
+                                }} style={{color: 'white'}}>
+                                Logout
+                            </Button>
+                        </>}
+                </Toolbar>
+            </Container>
+        </AppBar>
+    );
 };

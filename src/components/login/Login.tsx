@@ -2,12 +2,9 @@ import {Button, FormControl, FormGroup, Grid, TextField, Typography} from '@mui/
 import {useFormik} from 'formik'
 import React from 'react'
 import {useNavigate} from "react-router-dom";
-import {login} from "../../redux/authReducer";
-import {useDispatch} from "react-redux";
 
 
 export const Login = () => {
-    const dispatch = useDispatch()
     const history = useNavigate();
 
     const formik = useFormik({
@@ -29,7 +26,7 @@ export const Login = () => {
             isSecondButton: false
         },
         onSubmit: async (values) => {
-            await dispatch(login({email: values.name, password: values.password}))
+            // await dispatch(login({email: values.name, password: values.password}))
             history('/')
         },
     })
