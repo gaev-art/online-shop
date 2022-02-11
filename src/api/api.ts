@@ -1,19 +1,23 @@
-import { instance } from './instance'
+import {instance} from './instance'
 
 export const authApi = {
-  async login(data: LoginType) {
-    return await instance.post(`/auth/login`, data)
-
-  },
-  me() {
-    return instance.get(`/auth/me`)
-  }
+    async login() {
+        const response = await instance.get(`/login`)
+        console.log('login :', response)
+        return response.data.user
+    },
+    async logout() {
+        const response = await instance.get(`/logout`)
+        console.log('logout :', response)
+        return response.data.user
+    },
+    async me() {
+        const response = await instance.get(`/login/success`)
+        console.log('/ :', response)
+        return response.data.user
+    }
 }
 
-export type LoginType = {
-  email: string
-  password: string
-}
 
 
 

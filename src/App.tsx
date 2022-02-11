@@ -2,26 +2,46 @@ import React, {useEffect} from 'react';
 import {Navigate, Route, Routes} from 'react-router-dom';
 import {Login} from "./components/login/Login";
 import {useDispatch} from "react-redux";
-import {useAppSelector} from "./redux/store";
-import {actions, getToken} from "./redux/authReducer";
+import {actions} from "./redux/authReducer";
 import {Header} from "./components/Header/Header";
+import {useAppSelector} from "./redux/store";
 
 
 export const App = () => {
     const dispatch = useDispatch()
-    const isAuth = useAppSelector(state => state.auth.isAuth)
+    const user = useAppSelector(state => state.auth.user)
+
+
 
     useEffect(() => {
-        dispatch(getToken())
-        const token = localStorage.getItem('token')
-        if (token) {
-            dispatch(actions.setToken(token))
-        }
+        const getUser = () => {
+            fetch("http://localhost:5000/login/success", {
+                method: "GET",
+                credentials: "include",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Credentials": "true",
+                },
+            })
+                .then((response) => {
+                    if (response.status === 200) return response.json();
+                    throw new Error("authentication has been failed!");
+                })
+                .then((resObject) => {
+                    console.log("app :", resObject)
+                    dispatch(actions.setUser(resObject.user));
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        };
+        getUser();
+    }, []);
 
-    }, [])
     return (
         <div>
-            <Header isAuth={isAuth}/>
+            <Header user={user} />
             <div style={{textAlign: 'center'}}>
                 <Routes>
                     <Route path="/" element={<h1>first page</h1>}/>

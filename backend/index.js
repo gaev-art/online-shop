@@ -1,21 +1,36 @@
 require('dotenv').config();
+require("./services/passport");
 const express = require('express');
-const bodyParser = require('body-parser');
+const cookieSession = require("cookie-session");
+const mongoose = require('mongoose');
+const passport = require("passport");
+const path = require('path');
+const bodyParser = require("body-parser");
 const cors = require('cors');
-const mongoose = require('mongoose')
-const path = require('path')
 
-
-const app = express();
-app.use(bodyParser.json());
-app.use(cors());
-
-
-app.use('/auth', require('./routes/auth.routes'))
 
 const PORT = process.env.PORT
 const PROD = process.env.NODE_ENV
 const URL = process.env.MONGO_URL
+
+const app = express();
+app.use(bodyParser.json());
+
+
+app.use(cookieSession({
+  name: 'google-auth-session',
+  keys: ['key1', 'key2']
+}))
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  })
+);
 
 const start = async () => {
   try {
@@ -40,8 +55,6 @@ if (PROD === 'production') {
   })
 }
 
-start().then()
+app.use("/", require('./routes/auth.routes'))
 
-app.get('/', (request, response) =>
-  response.send(`<h1 align="center">Hello, it's my server<h1/>`)
-)
+start().then()
