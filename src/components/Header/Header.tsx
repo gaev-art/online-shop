@@ -24,7 +24,7 @@ export const Header = (props: PropsType) => {
                         ?
                         <Button style={{color: 'white'}} onClick={() => {
                             // dispatch(login())
-                            window.open("http://localhost:5000/login", "_self");
+                            window.open("https://gaev-art-shop.herokuapp.com/login", "_self");
                         }
                         }>Login with Google</Button>
                         :
@@ -38,7 +38,7 @@ export const Header = (props: PropsType) => {
                             <Button
                                 onClick={() => {
                                     // dispatch(logout())
-                                    window.open("http://localhost:5000/logout", "_self");
+                                    window.open("https://gaev-art-shop.herokuapp.com/logout", "_self");
                                 }} style={{color: 'white'}}>
                                 Logout
                             </Button>
