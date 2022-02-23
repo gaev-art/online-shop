@@ -7,9 +7,8 @@ export const authApi = {
         return response.data.user
     },
     async logout() {
-        const response = await instance.get(`/logout`)
-        console.log('logout :', response)
-        return response.data.user
+         await instance.get(`/logout`)
+
     },
     async me() {
         const response = await instance.get(`/login/success`)

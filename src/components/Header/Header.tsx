@@ -15,8 +15,8 @@ export const Header = (props: PropsType) => {
                 <Toolbar disableGutters>
                     <Box sx={{flexGrow: 1}}>
                         {pages.map((page) => (
-                            <NavLink style={{textDecoration: 'none', marginRight: '20px'}} key={page} to={page}>
-                                <Button style={{color: 'white'}}>{page}</Button>
+                            <NavLink style={{textDecoration: 'none', color:'white', marginRight: '20px'}} key={page} to={page}>
+                              {page}
                             </NavLink>
                         ))}
                     </Box>
@@ -24,7 +24,7 @@ export const Header = (props: PropsType) => {
                         ?
                         <Button style={{color: 'white'}} onClick={() => {
                             // dispatch(login())
-                            window.open("https://gaev-art-shop.herokuapp.com/login", "_self");
+                            window.open(`${process.env.REACT_APP_API_BASE_URL}/login`, "_self");
                         }
                         }>Login with Google</Button>
                         :
@@ -34,11 +34,11 @@ export const Header = (props: PropsType) => {
                                 alt=""
                                 style={{height: '30px'}}
                             />
-                            <span style={{margin: '0 50px 0 10px'}}>{props.user.lastName}{ props.user.firstName}</span>
+                            <span style={{margin: '0 50px 0 10px'}}>{props.user.lastName}{props.user.firstName}</span>
                             <Button
                                 onClick={() => {
                                     // dispatch(logout())
-                                    window.open("https://gaev-art-shop.herokuapp.com/logout", "_self");
+                                    window.open(`${process.env.REACT_APP_API_BASE_URL}/logout`, "_self");
                                 }} style={{color: 'white'}}>
                                 Logout
                             </Button>

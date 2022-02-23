@@ -1,16 +1,13 @@
-import {Dispatch} from 'redux'
-import {authApi} from '../api/api'
-import {InferActionTypes} from './store'
+import { Dispatch } from 'redux'
+import { authApi } from '../api/api'
+import { InferActionTypes } from './store'
 
 
 const SET_TOKEN = 'SET_TOKEN'
 
 
 const initialState = {
-    isAuth: false,
     user: null as Object | null
-
-
 }
 
 type InitialStateType = typeof initialState
@@ -21,7 +18,6 @@ export const authReducer = (state = initialState, action: ActionsType): InitialS
             return {
                 ...state,
                 user: action.user,
-
             }
         }
         default:
@@ -45,8 +41,6 @@ export const actions = {
 export const isAuth = () => async (dispatch: Dispatch<ActionsType>) => {
     const user = await authApi.me()
     user ? dispatch(actions.setUser(user)) : dispatch(actions.setUser(null))
-
-
 }
 export const login = () => async (dispatch: Dispatch<ActionsType>) => {
     const user = await authApi.login()
