@@ -1,36 +1,36 @@
-require('dotenv').config();
-require("./services/passport");
-const express = require('express');
-const cookieSession = require("cookie-session");
-const mongoose = require('mongoose');
-const passport = require("passport");
-const path = require('path');
-const bodyParser = require("body-parser");
-const cors = require('cors');
-
+require('dotenv').config()
+require('./services/passport')
+const express = require('express')
+const cookieSession = require('cookie-session')
+const mongoose = require('mongoose')
+const passport = require('passport')
+const path = require('path')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const PORT = process.env.PORT
 const PROD = process.env.NODE_ENV
 const URL = process.env.MONGO_URL
 
-const app = express();
-app.use(bodyParser.json());
+const app = express()
+app.use(bodyParser.json())
 
-
-app.use(cookieSession({
-  name: 'google-auth-session',
-  keys: ['key1', 'key2']
-}))
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(
+  cookieSession({
+    name: 'google-auth-session',
+    keys: ['key1', 'key2'],
+  })
+)
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
-    methods: "GET,POST,PUT,DELETE",
+    origin: process.env.CLIENT_URL,
+    methods: 'GET,POST,PUT,DELETE',
     credentials: true,
   })
-);
+)
 
 const start = async () => {
   try {
@@ -55,6 +55,6 @@ if (PROD === 'production') {
   })
 }
 
-app.use("/", require('./routes/auth.routes'))
+app.use('/', require('./routes/auth.routes'))
 
 start().then()
