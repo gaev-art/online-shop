@@ -50,7 +50,21 @@ router.get('/logout', (req, res) => {
 
 router.get(
   '/login',
-  passport.authenticate('google', { scope: ['profile', 'email'] })
+  passport.authenticate('google', { scope: ['profile', 'email'] }),
+  (req, res) => {
+    if (req.user) {
+      res.status(200).json({
+        user: {
+          email: req.user.email,
+          lastName: req.user.lastName,
+          firstName: req.user.firstName,
+          userId: req.user.userId,
+          photo: req.user.photo,
+          role: req.user.roles[0],
+        },
+      })
+    }
+  }
 )
 
 router.get(
