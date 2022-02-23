@@ -1,16 +1,17 @@
-import React, {useEffect} from 'react';
-import {Navigate, Route, Routes} from 'react-router-dom';
-import {Login} from "./components/login/Login";
-import {useDispatch} from "react-redux";
-import {actions} from "./redux/authReducer";
-import {Header} from "./components/Header/Header";
-import {useAppSelector} from "./redux/store";
+import React, { useEffect } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { Login } from "./components/login/Login";
+import { useDispatch } from "react-redux";
+import { actions } from "./redux/authReducer";
+import { Header } from "./components/Header/Header";
+import { useAppSelector } from "./redux/store";
 
 
 export const App = () => {
     const dispatch = useDispatch()
     const user = useAppSelector(state => state.auth.user)
 
+    console.log(process.env.REACT_APP_API_BASE_URL);
 
 
     useEffect(() => {
@@ -42,12 +43,12 @@ export const App = () => {
     return (
         <div>
             <Header user={user} />
-            <div style={{textAlign: 'center'}}>
+            <div style={{ textAlign: 'center' }}>
                 <Routes>
-                    <Route path="/" element={<h1>first page</h1>}/>
-                    <Route path="/second" element={<h1>second page</h1>}/>
-                    <Route path="/login" element={<Login/>}/>
-                    <Route path="*" element={<Navigate to="/"/>}/>
+                    <Route path="/" element={<h1>first page</h1>} />
+                    <Route path="/second" element={<h1>second page</h1>} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </div>
         </div>
