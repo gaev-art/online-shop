@@ -47,7 +47,7 @@ export const App = () => {
             <div style={{ textAlign: 'center' }}>
                 <Routes>
                     <Route path="/" element={<h1>first page</h1>} />
-                    <Route path="/second" element={<h1>second page</h1>} />
+                    <Route path="/settings" element={<h1>settings</h1>} />
                     <Route path="/login" element={<Login />} />
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>

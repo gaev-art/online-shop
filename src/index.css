@@ -13,3 +13,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.opened {
+  display: block;
+  transition: all ease 0.5s;
+  /*padding: 16px 0;*/
+  background-color: white;
+  /*position: absolute;*/
+  /*right: 0;*/
+  /*width: 144px;*/
+  border: 1px solid #D9D8D8;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(117, 125, 92, 0.25);
+}
+
+.closed {
+  display: none;
+}
+
+.list-item {
+  padding: 10px 14px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  list-style-type: none;
+}
+
+.list-item:hover {
+  background-color: whitesmoke;
+  color: #363636;
+}
