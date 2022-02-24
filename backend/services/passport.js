@@ -27,7 +27,7 @@ passport.use(
             email: profile.emails[0].value,
             lastName: profile.name.familyName,
             firstName: profile.name.givenName,
-            roles: ['Admin'],
+            roles: ['User'],
             userId: profile.id,
             password: 'null',
             username: profile.displayName,
