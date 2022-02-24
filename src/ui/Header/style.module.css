@@ -1,0 +1,19 @@
+.userMenu {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+.userName {
+  margin-right: 8px;
+}
+
+.opened {
+  position: absolute;
+  top: 50px;
+  right: 53px;
+}
+
+.opened > ul {
+  padding: 0;
+}

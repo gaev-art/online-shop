@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Login } from "./components/login/Login";
+import { Login } from "./login/Login";
 import { useDispatch } from "react-redux";
-import { actions } from "./redux/authReducer";
-import { Header } from "./components/Header/Header";
-import { useAppSelector } from "./redux/store";
+import { actions } from "../redux/authReducer";
+import { Header } from "./Header/Header";
+import { useAppSelector } from "../redux/store";
 
 
 export const App = () => {
