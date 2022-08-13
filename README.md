@@ -7,4 +7,3 @@ Click me!
 <a href='https://gaev-art-shop.herokuapp.com/'><img height="27" src="https://www.herokucdn.com/favicons/favicon.ico" alt="heroku"></a>
 
 </div>
-
