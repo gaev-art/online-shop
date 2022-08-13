@@ -49,10 +49,8 @@ const start = async () => {
 };
 
 if (PROD === "production") {
-  app.use(express.static(path.join(__dirname, "../build")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../build"));
-  });
+  // app.use(express.static(path.join(__dirname, "../build")));
+  app.get("*", express.static(path.join(__dirname, "../build")));
 }
 
 app.use("/", require("./routes/auth.routes"));
