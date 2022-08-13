@@ -32,24 +32,25 @@
   },
   "scripts": {
     "client": "react-scripts start",
-    "server": "cd backend && npm run dev",
+    "server": "cd backend && yarn run dev",
     "build": "react-scripts build",
-    "predeploy": "npm run build",
+    "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "cd backend && npm run start",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build && cd backend && npm install"
-  },
-  "engines": {
-    "node": "14.18.3",
-    "npm": "8.1.2"
+    "start": "cd backend && yarn run start",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn install --ignore-engines && yarn run build && cd backend && yarn install --ignore-engines"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "engines": {
+    "node": "12.22.9",
+    "npm": "8.11.0",
+    "yarn": "1.22.19"
   },
   "browserslist": {
     "production": [
