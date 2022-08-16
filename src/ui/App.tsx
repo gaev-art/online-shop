@@ -10,8 +10,6 @@ export const App = () => {
   const dispatch = useDispatch();
   const user = useAppSelector((state) => state.auth.user);
 
-  console.log(process.env.REACT_APP_API_BASE_URL);
-
   useEffect(() => {
     const getUser = () => {
       fetch(`${process.env.REACT_APP_API_BASE_URL}/login/success`, {
