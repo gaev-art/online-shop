@@ -54,5 +54,7 @@ if (PROD === "production") {
 }
 
 app.use("/", require("./routes/auth.routes"));
+app.use("/", require("./routes/settings.routes"));
+
 
 start().then();
