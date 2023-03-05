@@ -1,8 +1,8 @@
-import { Dispatch } from "redux";
-import { authApi } from "../api/api";
-import { InferActionTypes } from "./store";
+import {Dispatch} from 'redux';
+import {authApi} from '../api/api';
+import {InferActionTypes} from './store';
 
-const SET_TOKEN = "SET_TOKEN";
+const SET_TOKEN = 'SET_TOKEN';
 
 const initialState = {
   user: null as Object | null,

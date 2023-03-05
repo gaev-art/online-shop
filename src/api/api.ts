@@ -1,9 +1,9 @@
-import { instance } from "./instance";
+import {instance} from './instance';
 
 export const authApi = {
   async login() {
     const response = await instance.get(`/login`);
-    console.log("login :", response);
+    console.log('login :', response);
     return response.data.user;
   },
   async logout() {
@@ -11,7 +11,7 @@ export const authApi = {
   },
   async me() {
     const response = await instance.get(`/login/success`);
-    console.log("/ :", response);
+    console.log('/ :', response);
     return response.data.user;
   },
 };

@@ -29,19 +29,15 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "start": "cd backend && yarn run start",
     "client": "react-scripts start",
     "server": "cd backend && yarn run dev",
-    "build": "react-scripts build",
+    "build": "NPM_CONFIG_PRODUCTION=false yarn install --ignore-engines && yarn run pre-build && cd backend && yarn install --ignore-engines",
+    "pre-build": "react-scripts build",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "start": "cd backend && yarn run start",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn install --ignore-engines && yarn run build && cd backend && yarn install --ignore-engines"
-  },
-  "engines": {
-    "node": "12.22.9",
-    "npm": "8.1.2"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

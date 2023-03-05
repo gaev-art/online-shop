@@ -1,8 +1,8 @@
-import { AppBar, Box, Button, Container, Toolbar } from "@mui/material";
-import React from "react";
-import { UserMenu } from "./UserMenu";
-import logo from "../../images/logo.png";
-import { useNavigate } from "react-router-dom";
+import {AppBar, Box, Button, Container, Toolbar} from '@mui/material';
+import React from 'react';
+import {UserMenu} from './UserMenu';
+import logo from '../../images/logo.png';
+import {useNavigate} from 'react-router-dom';
 
 // const pages = ['first'];
 
@@ -16,12 +16,12 @@ export const Header = (props: PropsType) => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{flexGrow: 1}}>
             <img
-              onClick={() => history("/")}
+              onClick={() => history('/')}
               src={logo}
               alt=""
-              style={{ cursor: "pointer", width: "50px" }}
+              style={{cursor: 'pointer', width: '50px'}}
             />
             {/*    {pages.map((page) => (*/}
             {/*        <NavLink style={{textDecoration: 'none', color:'white', marginRight: '20px'}} key={page} to={page}>*/}
@@ -31,19 +31,19 @@ export const Header = (props: PropsType) => {
           </Box>
           {!props.user ? (
             <Button
-              style={{ color: "white" }}
+              style={{color: 'white'}}
               onClick={() => {
                 // dispatch(login())
                 window.open(
                   `${process.env.REACT_APP_API_BASE_URL}/login`,
-                  "_self"
+                  '_self'
                 );
               }}
             >
               Login with Google
             </Button>
           ) : (
-            <UserMenu user={props.user} />
+            <UserMenu user={props.user}/>
           )}
         </Toolbar>
       </Container>

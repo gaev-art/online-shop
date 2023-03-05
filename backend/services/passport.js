@@ -1,7 +1,7 @@
-require("dotenv").config();
-const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const User = require("../models/User");
+require('dotenv').config();
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const User = require('../models/User');
 
 passport.serializeUser(function (user, done) {
   done(null, user);
@@ -16,10 +16,10 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: "/api/account/google",
+      callbackURL: '/api/account/google',
     },
     function (accessToken, refreshToken, profile, done) {
-      User.findOne({ userId: profile.id }).then((existingUser) => {
+      User.findOne({userId: profile.id}).then((existingUser) => {
         if (existingUser) {
           done(null, existingUser);
         } else {
@@ -27,9 +27,9 @@ passport.use(
             email: profile.emails[0].value,
             lastName: profile.name.familyName,
             firstName: profile.name.givenName,
-            roles: ["User"],
+            roles: ['User'],
             userId: profile.id,
-            password: "null",
+            password: 'null',
             username: profile.displayName,
             photo: profile._json.picture,
           })

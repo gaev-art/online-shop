@@ -1,12 +1,12 @@
-require("dotenv").config();
-require("./services/passport");
-const express = require("express");
-const cookieSession = require("cookie-session");
-const mongoose = require("mongoose");
-const passport = require("passport");
-const path = require("path");
-const bodyParser = require("body-parser");
-const cors = require("cors");
+require('dotenv').config();
+require('./services/passport');
+const express = require('express');
+const cookieSession = require('cookie-session');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const path = require('path');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const PORT = process.env.PORT;
 const PROD = process.env.NODE_ENV;
@@ -17,8 +17,8 @@ app.use(bodyParser.json());
 
 app.use(
   cookieSession({
-    name: "google-auth-session",
-    keys: ["key1", "key2"],
+    name: 'google-auth-session',
+    keys: ['key1', 'key2'],
   })
 );
 app.use(passport.initialize());
@@ -27,7 +27,7 @@ app.use(passport.session());
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
-    methods: "GET,POST,PUT,DELETE",
+    methods: 'GET,POST,PUT,DELETE',
     credentials: true,
   })
 );
@@ -38,23 +38,23 @@ const start = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log("MongoDB connected successfully!");
+    console.log('MongoDB connected successfully!');
     app.listen(PORT, () =>
       console.log(`Server started on http://localhost:${PORT}`)
     );
   } catch (e) {
-    console.log("Server Error:", e.message);
+    console.log('Server Error:', e.message);
     process.exit(1);
   }
 };
 
-if (PROD === "production") {
+if (PROD === 'production') {
   // app.use(express.static(path.join(__dirname, "../build")));
-  app.get("*", express.static(path.join(__dirname, "../build")));
+  app.get('*', express.static(path.join(__dirname, '../build')));
 }
 
-app.use("/", require("./routes/auth.routes"));
-app.use("/", require("./routes/settings.routes"));
+app.use('/', require('./routes/auth.routes'));
+app.use('/', require('./routes/settings.routes'));
 
 
 start().then();

@@ -1,8 +1,8 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
-import thunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { useSelector, TypedUseSelectorHook } from "react-redux";
-import { authReducer } from "./authReducer";
+import {applyMiddleware, combineReducers, createStore} from 'redux';
+import thunk from 'redux-thunk';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import {useSelector, TypedUseSelectorHook} from 'react-redux';
+import {authReducer} from './authReducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -11,8 +11,8 @@ const rootReducer = combineReducers({
 export type AppStateType = ReturnType<typeof rootReducer>;
 
 export type InferActionTypes<T> = T extends {
-  [keys: string]: (...args: any[]) => infer U;
-}
+    [keys: string]: (...args: any[]) => infer U;
+  }
   ? U
   : never;
 
